@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- displays site properly based on user's device -->
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <!-- link to stylesheet -->
+    <link rel="stylesheet" href="stylesheet/style.css" />
+    <!-- link to fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Lato:wght@300&family=Open+Sans:wght@300&family=Plus+Jakarta+Sans:wght@800&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>Frontend Mentor | Todo app</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="to-do">
+        <div class="content">
+          <h1 class="fo-colr">TODO</h1>
+          <img src="images/icon-sun.svg" class="darkmode" onclick="" />
+          <img src="images/icon-moon.svg" class="lightmode" onclick="" />
+        </div>
+        <div class="task-input" onclick="addTask()">
+          <input
+            type="text"
+            placeholder="Create a new todo..."
+            id="input-box"
+          />
+          <div class="unchecked"></div>
+        </div>
+        <div class="list">
+          <ul id="task-container"></ul>
+        </div>
+        <div class="task-footer">
+          <div class="task-left">
+            <p id="task-left-count">0 items left</p>
+          </div>
+          <div class="task-state">
+            <p  id="show-all" class="blue">All</p>
+            <p   id="show-active" class="white-hover">Active</p>
+            <p id="show-completed">Completed</p>
+          </div>
+          <div class="complete-state">
+            <p id="clear-completed"   class="white-hover">Clear Completed</p>
+          </div>
+        
+      
+      </div>
+      </div>
+      
+    
+    </body>
+
+    <!-- 
+         -->
+    <!--       
+      
+      </div>
+    </div>
+ -->
+    <!-- <div class="attribution">
+      Challenge by
+      <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
+        >Frontend Mentor</a
+      >. Coded by <a href="#">Your Name Here</a>.
+    </div> -->
+    <script src="script.js"></script>
+  </body>
+</html>
