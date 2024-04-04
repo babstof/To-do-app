@@ -18,6 +18,7 @@ function addTask() {
   }
   inputBox.value = "";
   updateTaskCount();
+  saveData();
 }
 
 taskContainer.addEventListener(
@@ -25,75 +26,115 @@ taskContainer.addEventListener(
   function (e) {
     if (e.target.tagName === "LI") {
       e.target.classList.toggle("checked");
+      saveData();
     } else if (e.target.tagName === "IMG") {
       e.target.parentElement.remove();
+      updateTaskCount(); // reduces the tasks when deleted
+      saveData();
     }
   },
   false
 );
 
-// let tasks = [
-//   { text: "Task 1", completed: false },
-//   { text: "Task 2", completed: true },
-//   { text: "Task 3", completed: false },
-// ];
+// update count of the task
+function updateTaskCount() {
+  const activeTasks = taskContainer.querySelectorAll("li:not(.checked)").length;
+  const countElement = document.getElementById("task-left-count");
+  countElement.textContent = activeTasks + " items left";
+  saveData();
+}
+//function to show all tasks
+function showAll() {
+  const tasks = taskContainer.querySelectorAll("li");
+  tasks.forEach(function (task) {
+    task.style.display = "block"; //shows all task
+  });
+  updateTaskCount();
+  saveData();
+}
 
-populateList();
+// Function to show only active tasks
+function showActive() {
+  const tasks = taskContainer.querySelectorAll("li");
+  tasks.forEach(function (task) {
+    if (!task.classList.contains("checked")) {
+      task.style.display = "block"; // Show active tasks
+    } else {
+      task.style.display = "none"; // Hide completed tasks
+    }
+  });
+  // updateTaskCount();
+  saveData();
+}
+// Function to show only completed tasks
+function showCompleted() {
+  const tasks = taskContainer.querySelectorAll("li");
+  tasks.forEach(function (task) {
+    if (task.classList.contains("checked")) {
+      task.style.display = "block"; // Show completed tasks
+    } else {
+      task.style.display = "none"; // Hide active tasks
+    }
+  });
+}
+// Function to clear completed tasks
+function clearCompleted() {
+  const completedTasks = taskContainer.querySelectorAll("li.checked");
+  completedTasks.forEach(function (task) {
+    task.remove(); // Remove completed tasks
+  });
+  saveData();
+}
 
 allButton.addEventListener("click", showAll);
 activeButton.addEventListener("click", showActive);
 completedButton.addEventListener("click", showCompleted);
 clearCompletedButton.addEventListener("click", clearCompleted);
 
-function populateList() {
-  taskContainer.innerHTML = "";
-  // tasks.forEach((task) => {
-  //   let li = document.createElement("li");
-  //   li.textContent = task.text;
-  //   if (task.completed) {
-  //     li.classList.add("checked");
-  //   }
-  //   taskContainer.appendChild(li);
-  // });
-  // updateTaskCount();
+// function to save data on the browser everytime is refreshed
+function saveData() {
+  localStorage.setItem("data", taskContainer.innerHTML);
+  console.log("data");
 }
-console.log(task);
+saveData();
+//function to show details of data saved even after being refreshed
+function showTask() {
+  taskContainer.innerHtml = localStorage.getItem("data");
+}
+showTask();
 
-// counts the number of tasks left
-function updateTaskCount() {
-  const activeTasks = taskContainer.querySelectorAll("li:not(.checked)").length;
-  const countElement = document.getElementById("task-left-count");
-  countElement.textContent = activeTasks + " items left";
-}
+// toggle
 
-function showAll() {
-  populateList();
-}
+document.getElementById("image").addEventListener("click", function () {
+  let img = document.getElementById("image");
 
-function showActive() {
-  const activeTasks = tasks.filter((task) => !task.completed);
-  renderTasks(activeTasks);
-}
-
-function showCompleted() {
-  const completedTasks = tasks.filter((task) => task.completed);
-  renderTasks(completedTasks);
-}
-
-function clearCompleted() {
-  tasks = tasks.filter((task) => !task.completed);
-  populateList();
-}
-
-function renderTasks(filteredTasks) {
-  taskContainer.innerHTML = "";
-  filteredTasks.forEach((task) => {
-    let li = document.createElement("li");
-    li.textContent = task.text;
-    if (task.completed) {
-      li.classList.add("checked");
-    }
-    taskContainer.appendChild(li);
-  });
-  // updateTaskCount();
-}
+  if (img.src.endsWith("images/icon-sun.svg")) {
+    img.src = "images/icon-moon.svg";
+    img.alt = "Image 2";
+    document.body.style.backgroundColor = "hsl(0,0%, 98%)";
+    document.getElementById("to-do").style.backgroundImage =
+      "url('images/bg-desktop-light.jpg')";
+    document.getElementById("tasks").style.backgroundColor = "hsl(0, 0%, 98%)";
+    document.getElementById("input-box").style.color = "hsl(235, 21%, 11%)";
+    document.getElementById("task-container").style.backgroundColor =
+      "hsl(0, 0%, 98%)";
+    document.getElementById("task-container").style.color =
+      "hsl(235, 24%, 19%)";
+    document.getElementById("tfooter").style.backgroundColor =
+      "hsl(236, 0%, 98%)";
+  } else {
+    img.src = "images/icon-sun.svg";
+    img.alt = "sun-image";
+    document.body.style.backgroundColor = "hsl(235,21%, 11%)";
+    document.getElementById("to-do").style.backgroundImage =
+      "url('images/bg-desktop-dark.jpg')";
+    document.getElementById("tasks").style.backgroundColor =
+      "hsl(235, 24%, 19%)";
+    document.getElementById("input-box").style.color = "hsl(0, 0%, 98%)";
+    document.getElementById("task-container").style.backgroundColor =
+      "hsl(235, 24%, 19%)";
+    document.getElementById("task-container").style.color = "hsl(0, 0%, 98%)";
+    document.getElementById("tfooter").style.backgroundColor =
+      "hsl(235, 24%, 19%)";
+  }
+});

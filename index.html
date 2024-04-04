@@ -21,17 +21,19 @@
       rel="stylesheet"
     />
 
-    <title>Frontend Mentor | Todo app</title>
+    <title>Frontend Mentor  | Todo app</title>
   </head>
   <body>
     <div class="container">
-      <div class="to-do">
+      <div id="to-do">
         <div class="content">
           <h1 class="fo-colr">TODO</h1>
-          <img src="images/icon-sun.svg" class="darkmode" onclick="" />
-          <img src="images/icon-moon.svg" class="lightmode" onclick="" />
+          
+         <img id="image" src="images/icon-sun.svg" alt="sun-image"/>
+          
+        
         </div>
-        <div class="task-input" onclick="addTask()">
+        <div class="task-input" id="tasks" onclick="addTask()">
           <input
             type="text"
             placeholder="Create a new todo..."
@@ -42,7 +44,7 @@
         <div class="list">
           <ul id="task-container"></ul>
         </div>
-        <div class="task-footer">
+        <div class="task-footer" id="tfooter">
           <div class="task-left">
             <p id="task-left-count">0 items left</p>
           </div>
