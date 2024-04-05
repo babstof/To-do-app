@@ -111,7 +111,7 @@ document.getElementById("image").addEventListener("click", function () {
   if (img.src.endsWith("images/icon-sun.svg")) {
     img.src = "images/icon-moon.svg";
     img.alt = "Image 2";
-    document.body.style.backgroundColor = "hsl(0,0%, 98%)";
+    document.body.style.backgroundColor = "hsl(236,0%, 92%)";
     document.getElementById("to-do").style.backgroundImage =
       "url('images/bg-desktop-light.jpg')";
     document.getElementById("tasks").style.backgroundColor = "hsl(0, 0%, 98%)";
@@ -121,7 +121,7 @@ document.getElementById("image").addEventListener("click", function () {
     document.getElementById("task-container").style.color =
       "hsl(235, 24%, 19%)";
     document.getElementById("tfooter").style.backgroundColor =
-      "hsl(236, 0%, 98%)";
+      "hsl(0, 0%, 98%)";
   } else {
     img.src = "images/icon-sun.svg";
     img.alt = "sun-image";
