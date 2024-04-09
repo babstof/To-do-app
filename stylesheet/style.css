@@ -87,7 +87,7 @@ ul li {
   padding: 18px 8px 18px 55px;
   cursor: pointer;
   user-select: none;
-  border-bottom: 1px solid hsl(235, 19%, 35%);
+  border-bottom: 1px solid hsl(236, 9%, 61%);
   position: relative;
 }
 ul li::before {

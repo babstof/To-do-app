@@ -122,6 +122,8 @@ document.getElementById("image").addEventListener("click", function () {
       "hsl(235, 24%, 19%)";
     document.getElementById("tfooter").style.backgroundColor =
       "hsl(0, 0%, 98%)";
+    document.getElementsByTagName("li").style.borderBottom =
+      "hsl(236, 9%, 61%)";
   } else {
     img.src = "images/icon-sun.svg";
     img.alt = "sun-image";
@@ -136,5 +138,7 @@ document.getElementById("image").addEventListener("click", function () {
     document.getElementById("task-container").style.color = "hsl(0, 0%, 98%)";
     document.getElementById("tfooter").style.backgroundColor =
       "hsl(235, 24%, 19%)";
+    document.getElementsByTagName("li").style.borderBottom =
+      "hsl(233, 11%, 84%)";
   }
 });
